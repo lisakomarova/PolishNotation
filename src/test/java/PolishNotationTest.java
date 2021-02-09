@@ -39,7 +39,7 @@ public class PolishNotationTest {
             Sheet sheet = wb.getSheetAt(0);
             for (Row row : sheet) {
                 String input = row.getCell(0).getStringCellValue();
-                if ("".equals(input)) break;
+                if (input.isEmpty()) break;
                 double output = row.getCell(1).getNumericCellValue();
                 result = PolishNotation.evaluateNPN((PolishNotation.createNPN(input)).toString());
                 assertThat(Objects.equals(result, output), is(expectResult));

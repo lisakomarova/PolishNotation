@@ -168,18 +168,13 @@ public class PolishNotation {
         //TEST 1: False if expression starts or ends with an operator
         if (isAnOperator(expression.charAt(0)) || isAnOperator(expression.charAt(expression.length() - 1)))
             return false;
-        //System.out.println("Does not start or end with operator");
-
 
         //TEST 2: False if test has mismatching number of opening and closing parantheses
 
         int unclosedParenthesis = 0;
-        //System.out.println("Parentheses counter initialized to 0");
 
         for (int i = 0; i < expression.length(); i++) {
-            //System.out.println("For loop count: " + i);
             if (expression.charAt(i) == '(') {
-                //System.out.println("( found");
                 unclosedParenthesis++;
 
                 //SUBTEST: False if expression ends with '('
@@ -187,19 +182,15 @@ public class PolishNotation {
             }
             if (expression.charAt(i) == ')') {
                 unclosedParenthesis--;
-                //System.out.println(") found");
                 //SUBTEST: False if expression starts with ')'
                 if (i == 0) return false;
 
             }
             if (isAnOperator(expression.charAt(i))) {
 
-                //System.out.println("Found an Operator");
-                //TEST 3: False if operator is preceded by an operator or opening paranthesis
-                //or followed by closing paranthesis
+                //TEST 3: False if operator is preceded by an operator or opening parentheses
+                //or followed by closing parentheses
                 if (expression.charAt(i - 1) == '(' || expression.charAt(i + 1) == ')' || isAnOperator(expression.charAt(i + 1))) {
-                    //System.out.println("Found wrongly preceding or following parenthesis to operator");
-                    //System.out.println("or Found an operator following another operator");
                     return false;
                 }
 
